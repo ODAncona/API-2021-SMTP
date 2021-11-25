@@ -1,0 +1,7 @@
+mail name
+victim1@mock.ch victim1
+victim2@mock.ch victim2
+victim3@mock.ch victim3
+victim4@mock.ch victim4
+victim5@mock.ch victim5
+victim6@mock.ch victim6
