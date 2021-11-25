@@ -1,0 +1,6 @@
+victim1@mock.ch
+victim2@mock.ch
+victim3@mock.ch
+victim4@mock.ch
+victim5@mock.ch
+victim6@mock.ch
