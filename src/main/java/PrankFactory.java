@@ -5,9 +5,9 @@ public class PrankFactory {
     ArrayList<String> objet;
     ArrayList<String> raison;
 
-    public String getAJoke(Victim v) {
+    public String getAJoke() {
         StringBuilder sb = new StringBuilder();
-        sb.append(v.getName()).append(verb.get(2)).append(objet.get(4)).append(raison.get(3));
+        sb.append("Ta mère ").append(verb.get(2)).append(objet.get(4)).append(raison.get(3));
         return sb.toString();
     }
 

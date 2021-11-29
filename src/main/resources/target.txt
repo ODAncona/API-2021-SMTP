@@ -1,4 +1,3 @@
-mail name
 victim1@mock.ch victim1
 victim2@mock.ch victim2
 victim3@mock.ch victim3

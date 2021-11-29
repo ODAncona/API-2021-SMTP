@@ -1,0 +1,3 @@
+smtp_server localhost
+port 666
+group_size 3
