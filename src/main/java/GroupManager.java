@@ -26,6 +26,7 @@ public class GroupManager {
             String line;
             while ((line = fis.readLine()) != null) {
                 String[] victim = line.split(" ");
+                System.out.println(line);
                 group.add(new Victim(victim[0], victim[1]));
             }
         } catch (Exception e) {

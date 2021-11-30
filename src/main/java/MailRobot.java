@@ -11,15 +11,20 @@ public class MailRobot {
         }
         String filePath = args[1];
         */
-        String filePath = "/home/olivier/Documents/heig/s3/api/labo/API-2021-SMTP/src/main/resources/target.txt";
+        String filePath = "src/main/resources/target.txt";
+        String configPath = "src/main/resources/configuration.txt";
         // Ressources creation
-        String host = "localhost";
-        int port = 3101;
+        ConfigurationService confService = new ConfigurationService(configPath);
+        String host = confService.getConf("smtp_server");
+        int port = Integer.parseInt(confService.getConf("smtp_port"));
+        int groupSize = Integer.parseInt(confService.getConf("group_size"));
+        System.out.println(host);
+        System.out.println(port);
+        System.out.println(groupSize);
         MailService mailService = new MailService(host, port);
         GroupManager groupManager = new GroupManager(filePath);
         groupManager.constituteVictimGroup(3);
         //PrankFactory prankFactory = new PrankFactory();
-
         /*
         groupManager.getVictim();
         groupManager.constituteVictimGroup(5);
