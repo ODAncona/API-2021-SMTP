@@ -15,6 +15,7 @@ public class MailRobot {
         //To put in parameter of main
         String filePath = "src/main/resources/target.txt";
         String configPath = "src/main/resources/configuration.txt";
+        String jokesPath = "src/main/resources/jokes.txt";
 
         // Get Configuration
         ConfigurationService confService = new ConfigurationService(configPath);
@@ -27,7 +28,7 @@ public class MailRobot {
         groupManager.constituteVictimGroup(groupSize);
 
         // Prepare Joke
-        PrankFactory prankFactory = new PrankFactory();
+        PrankFactory prankFactory = new PrankFactory(jokesPath);
         String joke = prankFactory.getAJoke();
 
         // Mail Service
