@@ -52,5 +52,7 @@ public class GroupManager {
         return targetGroup;
     }
 
-
+    public Victim getSender() {
+        return sender;
+    }
 }

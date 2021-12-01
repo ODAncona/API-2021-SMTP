@@ -11,24 +11,30 @@ public class MailRobot {
         }
         String filePath = args[1];
         */
+
+        //To put in parameter of main
         String filePath = "src/main/resources/target.txt";
         String configPath = "src/main/resources/configuration.txt";
-        // Ressources creation
+
+        // Get Configuration
         ConfigurationService confService = new ConfigurationService(configPath);
         String host = confService.getConf("smtp_server");
         int port = Integer.parseInt(confService.getConf("smtp_port"));
         int groupSize = Integer.parseInt(confService.getConf("group_size"));
-        System.out.println(host);
-        System.out.println(port);
-        System.out.println(groupSize);
-        MailService mailService = new MailService(host, port);
+
+        // Prepare Victim
         GroupManager groupManager = new GroupManager(filePath);
-        groupManager.constituteVictimGroup(3);
-        //PrankFactory prankFactory = new PrankFactory();
-        /*
-        groupManager.getVictim();
-        groupManager.constituteVictimGroup(5);
-        mailService.sendMailToGroup(groupManager.getGroup(), groupManager.getAVictimAmongGroup(), prankFactory.getAJoke());
-         */
+        groupManager.constituteVictimGroup(groupSize);
+
+        // Prepare Joke
+        PrankFactory prankFactory = new PrankFactory();
+        String joke = prankFactory.getAJoke();
+
+        // Mail Service
+        MailService mailService = new MailService(host, port);
+        mailService.setContent(joke);
+
+        // Act
+        mailService.sendMailToGroup(groupManager.getTargetGroup(), joke);
     }
 }
