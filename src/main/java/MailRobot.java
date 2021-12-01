@@ -35,6 +35,6 @@ public class MailRobot {
         mailService.setContent(joke);
 
         // Act
-        mailService.sendMailToGroup(groupManager.getTargetGroup(), joke);
+        mailService.sendMailToGroup(groupManager.getTargetGroup(), groupManager.getSender().getEmail());
     }
 }

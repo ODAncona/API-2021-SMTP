@@ -9,7 +9,7 @@ public class PrankFactory {
         //StringBuilder sb = new StringBuilder();
         //sb.append("Ta mère ").append(verb.get(2)).append(objet.get(4)).append(raison.get(3));
         //return sb.toString();
-        return "LOLILOL";
+        return "MA BLEGUE";
     }
 
     public PrankFactory() {

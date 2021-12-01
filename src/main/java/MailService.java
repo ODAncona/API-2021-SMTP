@@ -15,7 +15,7 @@ public class MailService {
         this.PORT = port;
     }
 
-    public void sendMailToGroup(ArrayList<Victim> group, String rcpt_to) {
+    public void sendMailToGroup(ArrayList<Victim> group, String sender) {
         Socket clientSocket = null;
         BufferedReader reader = null;
         BufferedWriter writer = null;
@@ -31,14 +31,12 @@ public class MailService {
             System.out.println(reader.readLine());
             writer.write("EHLO localhost\r\n");
             writer.flush();
-            if ((fromServer = reader.readLine()) != null) System.out.println(fromServer);
-            else System.out.printf("XAXA");
 
             for (Victim victim : group) {
                 // Mail From
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("250") || fromServer.contains("OK")) {
-                        writer.write("MAIL FROM: " + "coco@coco.ch\r\n");
+                        writer.write("MAIL FROM: " + sender +"\r\n");
                         writer.flush();
                         break;
                     }
@@ -48,7 +46,7 @@ public class MailService {
                 // RCPT TO
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("250") || fromServer.contains("OK")) {
-                        writer.write("RCPT TO: " + rcpt_to + "\r\n");
+                        writer.write("RCPT TO: " + victim.getEmail() + "\r\n");
                         writer.flush();
                         break;
                     }
@@ -58,7 +56,7 @@ public class MailService {
                 // Content
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("250") || fromServer.contains("OK")) {
-                        writer.write("DATA: " + content + "\r\n");
+                        writer.write("DATA: " + subject("blague") + content + "\r\n");
                         writer.flush();
                         break;
                     }
@@ -74,8 +72,7 @@ public class MailService {
                     }
                     System.out.println(fromServer);
                 }
-                System.out.println("HAHAHAFirst Mail sent");
-                break;
+                System.out.println("Mail Sent");
             }
         } catch (IOException ex) {
             LOG.log(Level.SEVERE, ex.toString(), ex);
@@ -95,5 +92,9 @@ public class MailService {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    private String subject(String topic){
+        return "Subject: " + topic;
     }
 }
