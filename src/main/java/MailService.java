@@ -29,14 +29,16 @@ public class MailService {
 
             // Connexion
             System.out.println(reader.readLine());
-            writer.write("EHLO localhost");
+            writer.write("EHLO localhost\r\n");
             writer.flush();
+            if ((fromServer = reader.readLine()) != null) System.out.println(fromServer);
+            else System.out.printf("XAXA");
 
-            for(Victim victim: group) {
+            for (Victim victim : group) {
                 // Mail From
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("250") || fromServer.contains("OK")) {
-                        writer.write("MAIL FROM: " + "coco@coco.ch");
+                        writer.write("MAIL FROM: " + "coco@coco.ch\r\n");
                         writer.flush();
                         break;
                     }
@@ -46,7 +48,7 @@ public class MailService {
                 // RCPT TO
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("250") || fromServer.contains("OK")) {
-                        writer.write("RCPT TO: " + rcpt_to);
+                        writer.write("RCPT TO: " + rcpt_to + "\r\n");
                         writer.flush();
                         break;
                     }
@@ -56,7 +58,7 @@ public class MailService {
                 // Content
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("250") || fromServer.contains("OK")) {
-                        writer.write("DATA: " + content);
+                        writer.write("DATA: " + content + "\r\n");
                         writer.flush();
                         break;
                     }
@@ -66,13 +68,13 @@ public class MailService {
                 // Send
                 while ((fromServer = reader.readLine()) != null) {
                     if (fromServer.contains("354") || fromServer.contains("<CR><LF>.<CR><LF>")) {
-                        writer.write("\n.\n");
+                        writer.write("\r\n.\r\n");
                         writer.flush();
                         break;
                     }
                     System.out.println(fromServer);
                 }
-                System.out.println("HAHAHA");
+                System.out.println("HAHAHAFirst Mail sent");
                 break;
             }
         } catch (IOException ex) {
