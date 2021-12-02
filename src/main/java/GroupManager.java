@@ -5,19 +5,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class GroupManager {
-    private Victim sender;
-    private final String targetFilePath;
-    private final ArrayList<Victim> group = new ArrayList<>();
-    private final ArrayList<Victim> targetGroup = new ArrayList<>();
 
-    public GroupManager(String targetFilePath) {
-        this.targetFilePath = targetFilePath;
+    private final ArrayList<Group> groups = new ArrayList<>();
+
+    public ArrayList<Group> getGroups() {
+        return groups;
     }
 
-    private void getVictim() {
+    public GroupManager(String path, int nbGroups) {
+
+        ArrayList<Victim> victims = new ArrayList<>();
         BufferedReader fis = null;
+
         try {
-            fis = new BufferedReader(new FileReader(targetFilePath, StandardCharsets.UTF_8));
+            fis = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -26,33 +27,27 @@ public class GroupManager {
             String line;
             while ((line = fis.readLine()) != null) {
                 String[] victim = line.split(" ");
-                System.out.println(line);
-                group.add(new Victim(victim[0], victim[1]));
+                victims.add(new Victim(victim[0], victim[1]));
             }
         } catch (Exception e) {
             System.out.println(e);
         }
 
-    }
+        if (3 * nbGroups > victims.size())
+            throw new RuntimeException("Pas assez de victimes!");
 
-    private Victim getAVictimAmongGroup() {
-        return group.get((int) (Math.random() * group.size()));
-    }
+        Collections.shuffle(victims);
 
-    public void constituteVictimGroup(int size) {
-        getVictim();
-        Collections.shuffle(group);
-        for (int i = 0; i < size; ++i) {
-            targetGroup.add(group.get(i));
+        for (int i = 0; i < nbGroups; ++i) {
+            ArrayList<Victim> victimsInGroup = new ArrayList<>();
+
+            int j = nbGroups + i;
+            while (j < victims.size()) {
+                victimsInGroup.add(victims.get(j));
+                j += nbGroups;
+            }
+
+            groups.add(new Group(victims.get(i), victimsInGroup));
         }
-        sender = getAVictimAmongGroup();
-    }
-
-    public ArrayList<Victim> getTargetGroup() {
-        return targetGroup;
-    }
-
-    public Victim getSender() {
-        return sender;
     }
 }

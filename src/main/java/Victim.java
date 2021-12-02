@@ -1,33 +1,15 @@
 public class Victim {
-    private String email;
-    private String name;
+
+    final private String email;
+    final private String name;
+
+    public String getEmail() {
+        return email;
+    }
 
     public Victim(String email, String name) {
         this.email = email;
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Victim{" +
-                "email='" + email + '\'' +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
