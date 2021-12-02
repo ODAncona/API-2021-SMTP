@@ -1,5 +1,5 @@
 # API-2021-SMTP
-
+LOL
 ⚠️ Please clone [our own fork of MockMock server](https://github.com/HEIGVD-Course-API/MockMock) instead of the official one, because we resolved an issues with a dependency (see this [pull request](https://github.com/tweakers/MockMock/pull/8) if you want to have more information).
 
 ## Objectives
