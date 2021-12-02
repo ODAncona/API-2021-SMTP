@@ -4,6 +4,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class ConfigurationService {
+
     private final String path;
     private final HashMap<String, String> configuration = new HashMap<>();
 
