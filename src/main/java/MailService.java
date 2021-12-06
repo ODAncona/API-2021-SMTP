@@ -56,6 +56,7 @@ public class MailService {
                     readFromServer(reader);
                 }
                 writer.write("DATA" + CRLF);
+                writer.write("Content-Type: text/plain: charset=\"utf-8\"" + CRLF);
                 writer.flush();
                 reader.readLine();
                 writer.write("From: " + group.getSender().getEmail() + CRLF);
