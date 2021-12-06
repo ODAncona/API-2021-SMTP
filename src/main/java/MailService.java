@@ -5,10 +5,8 @@ import java.util.logging.Logger;
 
 public class MailService {
 
-    private final int PORT;
-    private final String HOST;
-
-    public static final String CRLF = "\r\n";
+    private final int port;
+    private final String host;
 
     private static final Logger LOG = Logger.getLogger(MailService.class.getName());
 
@@ -19,8 +17,8 @@ public class MailService {
      * @param port : port
      */
     public MailService(String host, int port) {
-        this.HOST = host;
-        this.PORT = port;
+        this.host = host;
+        this.port = port;
     }
 
     /**
@@ -51,7 +49,7 @@ public class MailService {
         BufferedWriter writer = null;
 
         try {
-            clientSocket = new Socket(HOST, PORT);
+            clientSocket = new Socket(host, port);
             writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -64,6 +62,7 @@ public class MailService {
             readFromServer(reader);
 
             for (Group group : groupManager.getGroups()) {
+                String CRLF = "\r\n";
                 writer.write("MAIL FROM: " + group.getSender().getEmail() + CRLF);
                 writer.flush();
                 readFromServer(reader);
