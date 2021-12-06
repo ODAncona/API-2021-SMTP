@@ -5,7 +5,7 @@ public class MailSender {
         //To put in parameter of main
         String victimsPath = "src/main/resources/victims.txt";
         String configPath = "src/main/resources/configuration.txt";
-        String jokesPath = "src/main/resources/jokes_custom.txt";
+        String jokesPath = "src/main/resources/jokes_factory.txt";
 
         // Get Configuration
         ConfigurationService confService = new ConfigurationService(configPath);
@@ -17,7 +17,7 @@ public class MailSender {
         GroupManager groupManager = new GroupManager(victimsPath, nbGroups);
 
         // Prepare Jokes
-        PrankFactory prankFactory = new PrankFactory(jokesPath, "Custom");
+        PrankFactory prankFactory = new PrankFactory(jokesPath, "Factory");
 
         // Mail Service
         MailService mailService = new MailService(host, port);
