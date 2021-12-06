@@ -13,28 +13,28 @@ public class GroupManager {
     }
 
     public GroupManager(String path, int nbGroups) {
-
         ArrayList<Victim> victims = new ArrayList<>();
         BufferedReader fis = null;
 
         try {
             fis = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        try {
-            String line;
-            while ((line = fis.readLine()) != null) {
-                String[] victim = line.split(" ");
-                victims.add(new Victim(victim[0], victim[1]));
+            try {
+                String line;
+                while ((line = fis.readLine()) != null) {
+                    String[] victim = line.split(" ");
+                    if (victim[0].matches("^(.+)@(.+)$"))
+                        victims.add(new Victim(victim[0], victim[1]));
+                    else throw new RuntimeException("Erreur email invalide: " + victim[0]);
+                }
+            } catch (Exception e) {
+                System.out.println(e);
             }
         } catch (Exception e) {
             System.out.println(e);
         }
 
         if (3 * nbGroups > victims.size())
-            throw new RuntimeException("Pas assez de victimes!");
+            throw new RuntimeException("Pas assez de victimes pour " + nbGroups);
 
         Collections.shuffle(victims);
 

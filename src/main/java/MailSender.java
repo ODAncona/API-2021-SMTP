@@ -17,7 +17,7 @@ public class MailSender {
         GroupManager groupManager = new GroupManager(victimsPath, nbGroups);
 
         // Prepare Jokes
-        PrankFactory prankFactory = new PrankFactory(jokesPath, "Factory");
+        PrankFactory prankFactory = new PrankFactory(jokesPath, "Custom");
 
         // Mail Service
         MailService mailService = new MailService(host, port);

@@ -82,6 +82,7 @@ public class MailService {
             } catch (IOException ex) {
                 LOG.log(Level.SEVERE, ex.toString(), ex);
             }
+            System.out.println("Méfait accompli! ;)");
         }
     }
 }

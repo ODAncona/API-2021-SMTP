@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Group {
 
-    private Victim sender;
-    private ArrayList<Victim> recipients = new ArrayList<>();
+    private final Victim sender;
+    private final ArrayList<Victim> recipients;
 
     public Victim getSender() {
         return sender;
