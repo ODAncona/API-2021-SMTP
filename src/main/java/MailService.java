@@ -12,11 +12,22 @@ public class MailService {
 
     private static final Logger LOG = Logger.getLogger(MailService.class.getName());
 
+    /**
+     * Constructor
+     *
+     * @param host : smtp server's ip
+     * @param port : port
+     */
     public MailService(String host, int port) {
         this.HOST = host;
         this.PORT = port;
     }
 
+    /**
+     * Read until the server answer "250 OK"
+     *
+     * @param reader : socket buffered reader
+     */
     public void readFromServer(BufferedReader reader) {
         String fromServer;
         try {
@@ -28,6 +39,12 @@ public class MailService {
         }
     }
 
+    /**
+     * Connect to smtp server, and send email to the group's victim.
+     *
+     * @param groupManager : list of all groups
+     * @param prankFactory : joke builder
+     */
     public void sendMail(GroupManager groupManager, PrankFactory prankFactory) {
         Socket clientSocket = null;
         BufferedReader reader = null;

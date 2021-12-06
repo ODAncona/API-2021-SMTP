@@ -13,6 +13,12 @@ public class PrankFactory {
     private final ArrayList<String> object = new ArrayList<>();
     private final ArrayList<String> customJokes = new ArrayList<>();
 
+    /**
+     * Factory Mode -> build a joke with funny logic
+     * Custom Mode -> use already created jokes
+     *
+     * @return a joke according to mode
+     */
     public String getAJoke() {
         // Factory Mode
         if (mode.equals("Factory")) {
@@ -30,12 +36,21 @@ public class PrankFactory {
         return "THIS AINT FUNNY";
     }
 
+    /**
+     * Constructor
+     *
+     * @param path : path to joke file
+     * @param mode : the mode can be set to "Factory" or "Custom"
+     */
     public PrankFactory(String path, String mode) {
         this.path = path;
         this.mode = mode;
         parseJokeFile();
     }
 
+    /**
+     * Parse joke file and produce data to create jokes!
+     */
     private void parseJokeFile() {
         BufferedReader fis = null;
         try {
