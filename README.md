@@ -23,7 +23,8 @@ COPY . .
 WORKDIR .
 CMD ["java", "-jar", "MockMock.jar"]
   ```
-* Compilez l'image docker à l'aide de `docker build`
+* Compilez l'image docker à l'aide de `docker build -t mailtrap .`
+* Instanciez un container et liez les ports à l'aide de `docker run -p 8282:8282 -p 25:25 mailtrap`
 ### Configuration
 * **Clear and simple instructions for configuring your tool and running a prank campaign**. If you do a good job, an external user should be able to clone your repo, edit a couple of files and send a batch of e-mails in less than 10 minutes.
 ### Compilation
