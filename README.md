@@ -25,6 +25,43 @@ CMD ["java", "-jar", "MockMock.jar"]
   ```
 * Compilez l'image docker à l'aide de `docker build -t mailtrap .`
 * Instanciez un container et liez les ports à l'aide de `docker run -p 8282:8282 -p 25:25 mailtrap`
+### Setting up configuration file
+Afin de pouvoir utiliser le programme, il faut configuration une campagne avec trois fichiers :
+- Configuration.txt
+- Victims.txt
+- jokes.txt
+
+#### Configuration
+Le fichier de configuration doit contenir:
+```
+smtp_server <adresse du serveur>
+smtp_port <25 par défaut>
+nb_groups <nombre de groupe de la campagne de spam
+```
+#### Victims
+Le fichier de victim doit être structuré:
+```
+<email de la victime 1> <nom de la victime 1>
+etc...
+```
+#### Jokes
+Il peut exister 2 fichiers de configuration pour le mode joke pour chaque mode :
+
+**mode Factory :**
+```
+<personne> <action> <nombre> <object>
+etc...
+```
+**mode Custom :**
+```
+<joke1>
+etc...
+```
+
+#### Launch application
+//TODO
+Afin de lancer l'application il faut exécuter:
+`java -jar app <victims> <configuration> <jokes> <mode>`
 ### Configuration
 * **Clear and simple instructions for configuring your tool and running a prank campaign**. If you do a good job, an external user should be able to clone your repo, edit a couple of files and send a batch of e-mails in less than 10 minutes.
 ### Compilation
