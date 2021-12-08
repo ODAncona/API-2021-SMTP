@@ -53,7 +53,7 @@ public class PrankFactory {
      * Parse joke file and produce data to create jokes!
      */
     private void parseJokeFile() {
-        BufferedReader fis = null;
+        BufferedReader fis;
         try {
             fis = new BufferedReader(new FileReader(path, StandardCharsets.UTF_8));
 
@@ -69,7 +69,7 @@ public class PrankFactory {
                         object.add(joke[3]);
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.out.println("Impossible de lire le fichier source correctement " + e);
                 }
             }
 
@@ -81,7 +81,7 @@ public class PrankFactory {
                         customJokes.add(joke);
                     }
                 } catch (Exception e) {
-                    System.out.println(e);
+                    System.out.println("Impossible de lire le fichier source correctement " + e);
                 }
             }
         } catch (Exception e) {

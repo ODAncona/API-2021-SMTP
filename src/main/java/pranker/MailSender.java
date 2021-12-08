@@ -2,12 +2,23 @@ package pranker;
 
 public class MailSender {
 
-    public static void main(String[] args) {
+    private static void showUsage() {
+        System.out.println("Usage: java -jar app <victims> <configuration> <jokes> <mode>");
+        System.out.println("Modes: \"Custom\" -> send some custom jokes");
+        System.out.println("Modes: \"Factory\" -> forge some customized jokes");
+    }
 
-        //To put in parameter of main
-        /*String victimsPath = "src/config/victims.txt";
-        String configPath = "src/config/configuration.txt";
-        String jokesPath = "src/config/jokes_custom.txt";*/
+    public static void main(String[] args) {
+        // Check Arguments
+        if (args.length != 4) {
+            showUsage();
+            return;
+        } else if (!args[3].equals("Custom") && !args[3].equals("Factory")) {
+            System.out.println("Unknow mode !");
+            showUsage();
+            return;
+        }
+
         String victimsPath = args[0];
         String configPath = args[1];
         String jokesPath = args[2];
@@ -31,5 +42,4 @@ public class MailSender {
         // Act
         mailService.sendMail(groupManager, prankFactory);
     }
-
 }
