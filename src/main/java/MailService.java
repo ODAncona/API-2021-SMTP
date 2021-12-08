@@ -80,7 +80,7 @@ public class MailService {
                 for (int i = 0; i < group.getRecipients().size(); ++i) {
                     writer.write(group.getRecipients().get(i).getEmail() + ",");
                 }
-                writer.write(CRLF + "Subject: Blague" + CRLF + CRLF);
+                writer.write(CRLF + "Subject: =?utf-8?q?" + "éèàöäü" + "?=" + CRLF + CRLF);
                 writer.write(prankFactory.getAJoke() + CRLF + "." + CRLF);
                 writer.flush();
                 readFromServer(reader);
@@ -98,7 +98,7 @@ public class MailService {
             } catch (IOException ex) {
                 LOG.log(Level.SEVERE, ex.toString(), ex);
             }
-            System.out.println("Méfait accompli! ;)");
+            System.out.println("Mefait accompli! ;)");
         }
     }
 }
