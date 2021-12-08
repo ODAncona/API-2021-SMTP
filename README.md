@@ -12,7 +12,7 @@ Afin de tester une campagne de pourriel dans environnement de test il faudra :
 ### Setting up Mock SMTP server
 Dans cette section, nous expliquons comment implémenter le mailtrap MockMock à l'aide de docker. Nous allons utiliser le [fork](https://github.com/HEIGVD-Course-API/MockMock) MockMock de HEIGVD-Course-API. Voici les étapes à effectuer :
 * Commencer par télécharger le code de MockMock
-* Compilere le code ou exécuter le code déjà compilé dans release. (Généralement, il faudrait être sûr que le fichier compilé est bien celui que l'on souhaite pour des raisons de sécurité)
+* Compiler le code ou exécuter le code déjà compilé dans release. (Généralement, il faudrait être sûr que le fichier compilé est bien celui que l'on souhaite pour des raisons de sécurité)
 * Normalement, le serveur devrait écouter sur le port 25 et être disponible sur localhost:8282 avec la commande `java -jar MockMock.jar -p 25 -h 8282
   `
 * Nous allons maintenant rendre ce service disponible dans un container docker. Premièrement il faut se placer dans le même dossier que l'exécutable du mailtrap.
@@ -62,9 +62,6 @@ etc...
 //TODO
 Afin de lancer l'application il faut exécuter:
 `java -jar app <victims> <configuration> <jokes> <mode>`
-### Configuration
-* **Clear and simple instructions for configuring your tool and running a prank campaign**. If you do a good job, an external user should be able to clone your repo, edit a couple of files and send a batch of e-mails in less than 10 minutes.
-### Compilation
 
 ## Project Structure
 ![diagramme de classe de l'application](figures/smtp.png)
