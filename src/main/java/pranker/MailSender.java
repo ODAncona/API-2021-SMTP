@@ -5,9 +5,13 @@ public class MailSender {
     public static void main(String[] args) {
 
         //To put in parameter of main
-        String victimsPath = "src/config/victims.txt";
+        /*String victimsPath = "src/config/victims.txt";
         String configPath = "src/config/configuration.txt";
-        String jokesPath = "src/config/jokes_custom.txt";
+        String jokesPath = "src/config/jokes_custom.txt";*/
+        String victimsPath = args[0];
+        String configPath = args[1];
+        String jokesPath = args[2];
+        String mode = args[3];
 
         // Get Configuration
         ConfigurationService confService = new ConfigurationService(configPath);
@@ -19,7 +23,7 @@ public class MailSender {
         GroupManager groupManager = new GroupManager(victimsPath, nbGroups);
 
         // Prepare Jokes
-        PrankFactory prankFactory = new PrankFactory(jokesPath, "Custom");
+        PrankFactory prankFactory = new PrankFactory(jokesPath, mode);
 
         // Mail Service
         MailService mailService = new MailService(host, port);
