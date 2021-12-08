@@ -32,15 +32,15 @@ CMD ["java", "-jar", "MockMock.jar"]
 ## Project Structure
 * **A description of your implementation**: document the key aspects of your code. It is probably a good idea to start with a class diagram. Decide which classes you want to show (focus on the important ones) and describe their responsibilities in text. It is also certainly a good idea to include examples of dialogues between your client and an SMTP server (maybe you also want to include some screenshots here).
 
-### ConfigurationService
+### pranker.ConfigurationService
 This service will parse the configuration file and link each config param with his value into a set.
-### Group
+### pranker.Group
 
-### GroupManager
-### MailSender
-### MailService
-### PrankFactory
-### Victim
+### pranker.GroupManager
+### pranker.MailSender
+### pranker.MailService
+### pranker.PrankFactory
+### pranker.Victim
 ## References
 
 * [Here is our fork of MockMock server](https://github.com/HEIGVD-Course-API/MockMock), in which we resolved an issues with a dependency (see this [pull request](https://github.com/tweakers/MockMock/pull/8) if you want to have more information).

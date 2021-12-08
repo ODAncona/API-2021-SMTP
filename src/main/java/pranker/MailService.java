@@ -1,3 +1,5 @@
+package pranker;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.logging.Level;

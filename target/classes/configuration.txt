@@ -1,3 +1,0 @@
-smtp_server localhost
-smtp_port 25
-nb_groups 6

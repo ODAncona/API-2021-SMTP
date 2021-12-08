@@ -1,3 +1,5 @@
+package pranker;
+
 public class Victim {
 
     final private String email;

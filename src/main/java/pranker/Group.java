@@ -1,3 +1,5 @@
+package pranker;
+
 import java.util.ArrayList;
 
 public class Group {
