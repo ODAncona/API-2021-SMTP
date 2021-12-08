@@ -2,6 +2,8 @@ package pranker;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -82,7 +84,8 @@ public class MailService {
                 for (int i = 0; i < group.getRecipients().size(); ++i) {
                     writer.write(group.getRecipients().get(i).getEmail() + ",");
                 }
-                writer.write(CRLF + "Subject: =?utf-8?q?" + "éèàöäü" + "?=" + CRLF + CRLF);
+                String subject = "Vous êtes concerné!";
+                writer.write(CRLF + "Subject: =?utf-8?B?" + Base64.getEncoder().encodeToString(subject.getBytes(StandardCharsets.UTF_8)) + "?=" + CRLF + CRLF);
                 writer.write(prankFactory.getAJoke() + CRLF + "." + CRLF);
                 writer.flush();
                 readFromServer(reader);
@@ -100,7 +103,7 @@ public class MailService {
             } catch (IOException ex) {
                 LOG.log(Level.SEVERE, ex.toString(), ex);
             }
-            System.out.println("Mefait accompli! ;)");
+            System.out.println("Méfait accompli! ;)");
         }
     }
 }
